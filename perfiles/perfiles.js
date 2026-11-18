@@ -1,7 +1,8 @@
 // Página de perfiles: carga perfiles.json (lo escribe el juego cada hora con datos públicos de quienes lo pidieron) y filtra por nombre.
 // Todo el texto entra con textContent (los nombres vienen del chat: nunca se interpretan como HTML).
 (() => {
-  const SPRITES = ['elfo', 'enano', 'orco'];
+  const RAZAS = ['elfo', 'enano', 'orco'];
+  const ACCION = { 'leñador': 'talar', minero: 'picar', agricultor: 'cosechar' }; // la animación de trabajo del juego de cada oficio
   const contenedor = document.getElementById('tarjetas');
   const buscar = document.getElementById('buscar');
   const cuenta = document.getElementById('cuenta');
@@ -44,12 +45,19 @@
     dl.append(dd);
   }
 
-  function tarjeta(p) {
+  // Un número estable por nombre (para que cada personaje empiece su animación en un cuadro distinto y no marchen todos a la vez).
+  const hash = (t) => [...t].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
+
+  function tarjeta(p, fondos) {
     const art = el('article', 'pergamino tarjeta');
     const retrato = el('div', 'retrato');
-    const sprite = el('div', `sprite ${SPRITES.includes(p.raza) ? p.raza : 'elfo'}`);
+    const oficio = ACCION[p.oficio] ? p.oficio : 'leñador';
+    retrato.style.backgroundImage = `url("${fondos[oficio]}")`;
+    const raza = RAZAS.includes(p.raza) ? p.raza : 'elfo';
+    const sprite = el('div', `sprite ${raza}-${ACCION[oficio]}`);
+    sprite.style.setProperty('--desfase', `${-(hash(p.nombre) % 4) * (1 / 6)}s`);
     sprite.setAttribute('role', 'img');
-    sprite.setAttribute('aria-label', `${p.raza_texto ?? p.raza}`);
+    sprite.setAttribute('aria-label', `${p.raza_texto ?? p.raza}, ${p.oficio_texto ?? p.oficio}`);
     retrato.append(sprite);
 
     const datos = el('div', 'datos');
@@ -73,10 +81,15 @@
     return art;
   }
 
-  function pintar() {
+  let turno = 0; // si se escribe rápido en el buscador, solo vale el último pintado
+  async function pintar() {
+    const mio = ++turno;
     const q = normalizar(buscar.value.trim());
     const lista = q ? perfiles.filter((p) => normalizar(p.nombre).includes(q)) : perfiles;
-    contenedor.replaceChildren(...lista.map(tarjeta));
+    const fondos = {};
+    for (const oficio of new Set(lista.map((p) => (ACCION[p.oficio] ? p.oficio : 'leñador')))) fondos[oficio] = await window.ESCENAS.fondo(oficio);
+    if (mio !== turno) return;
+    contenedor.replaceChildren(...lista.map((p) => tarjeta(p, fondos)));
     cuenta.textContent = perfiles.length ? `${lista.length} de ${perfiles.length} aventureros` : '';
     vacio.hidden = lista.length > 0;
     if (!lista.length) {

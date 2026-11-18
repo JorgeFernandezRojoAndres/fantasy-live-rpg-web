@@ -66,28 +66,45 @@ a { color: #ffd54a; }
 }
 .buscador input:focus { border-color: var(--cinta); }
 
-.tarjetas { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.tarjetas { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); }
 
-.tarjeta { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; align-items: start; padding-top: 0.8rem; }
+/* La tarjeta: arriba la escena del oficio (pixel art de 48×40 puesto a ×5, sin suavizar) con el personaje haciendo su trabajo; debajo, los datos. */
+.tarjeta { display: grid; gap: 0.7rem; justify-items: center; align-content: start; padding-top: 0.8rem; }
 .retrato {
-  width: 84px; height: 108px;
-  display: grid; place-items: center;
-  background: linear-gradient(#6b80ba, #aadcf6 70%, #6aa84f 70%); /* cielo de día y hierba, como en la isla */
+  position: relative;
+  width: 240px; height: 200px; /* 48×40 a ×5 */
   border: 3px solid var(--borde);
-}
-.sprite {
-  width: 24px; height: 32px;
-  background-repeat: no-repeat;
-  background-position: 0 0; /* primer cuadro de «quieto de frente» */
+  background-size: 240px 200px;
   image-rendering: pixelated;
-  transform: scale(3);
-  transform-origin: center;
+  overflow: hidden;
 }
-.sprite.elfo { background-image: url("sprites/elfo.png"); }
-.sprite.enano { background-image: url("sprites/enano.png"); }
-.sprite.orco { background-image: url("sprites/orco.png"); }
+/* El sprite de 24×32 a ×5 (120×160) con la hoja de su animación del juego: 4 cuadros a 6 por segundo, como en el directo. */
+.sprite {
+  --e: 5;
+  position: absolute;
+  left: calc(50% - 12px * var(--e));
+  bottom: 24px;
+  width: calc(24px * var(--e));
+  height: calc(32px * var(--e));
+  background-repeat: no-repeat;
+  background-size: calc(96px * var(--e)) calc(32px * var(--e));
+  image-rendering: pixelated;
+  animation: trabajar 0.6667s steps(4) infinite;
+  animation-delay: var(--desfase, 0s);
+}
+@keyframes trabajar { to { background-position-x: calc(-96px * var(--e)); } }
+@media (prefers-reduced-motion: reduce) { .sprite { animation: none; } }
+.sprite.elfo-talar { background-image: url("sprites/elfo_talar.png"); }
+.sprite.elfo-picar { background-image: url("sprites/elfo_picar.png"); }
+.sprite.elfo-cosechar { background-image: url("sprites/elfo_cosechar.png"); }
+.sprite.enano-talar { background-image: url("sprites/enano_talar.png"); }
+.sprite.enano-picar { background-image: url("sprites/enano_picar.png"); }
+.sprite.enano-cosechar { background-image: url("sprites/enano_cosechar.png"); }
+.sprite.orco-talar { background-image: url("sprites/orco_talar.png"); }
+.sprite.orco-picar { background-image: url("sprites/orco_picar.png"); }
+.sprite.orco-cosechar { background-image: url("sprites/orco_cosechar.png"); }
 
-.datos { min-width: 0; }
+.datos { min-width: 0; width: 100%; }
 .nombre { margin: 0; font-size: 1.1rem; overflow-wrap: anywhere; }
 .rol { margin: 0 0 0.5rem; font-weight: 400; color: var(--suave); }
 .cifras { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.6rem; font-size: 0.9rem; }

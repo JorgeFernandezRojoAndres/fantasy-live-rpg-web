@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfiles del pueblo · Fantasy Live RPG 24/7</title>
+  <meta name="description" content="Los aventureros del pueblo de Fantasy Live RPG 24/7: busca a alguien por su nombre y mira su tarjeta.">
+  <link rel="stylesheet" href="perfiles.css">
+</head>
+<body>
+  <main>
+    <header class="pergamino cabecera">
+      <div class="cinta">Perfiles del pueblo</div>
+      <p>Los aventureros que quisieron salir aquí. Busca a alguien por su nombre.</p>
+      <label class="buscador">
+        <span class="solo-lectores">Buscar por nombre</span>
+        <input id="buscar" type="search" placeholder="Buscar por nombre…" autocomplete="off" maxlength="40">
+      </label>
+      <p id="cuenta" class="pequeno" aria-live="polite"></p>
+    </header>
+
+    <section id="tarjetas" class="tarjetas" aria-label="Perfiles"></section>
+    <p id="vacio" class="pergamino aviso" hidden></p>
+
+    <section class="pergamino como">
+      <div class="cinta cinta-chica">¿Quieres salir aquí?</div>
+      <p>En el chat del directo escribe <strong>!perfil web</strong>. Tu tarjeta aparecerá en menos de 1 hora.</p>
+      <p>Para salir: <strong>!perfil web quitar</strong>. Nadie sale por defecto. <a href="../privacidad.html#perfiles">Qué se publica</a>.</p>
+    </section>
+
+    <footer>
+      <p id="actualizado" class="pequeno"></p>
+      <p><a href="../index.html">Volver al inicio</a> · <a href="https://www.youtube.com/@JCR/live">Ver el directo</a></p>
+    </footer>
+  </main>
+  <script src="perfiles.js"></script>
+</body>
+</html>

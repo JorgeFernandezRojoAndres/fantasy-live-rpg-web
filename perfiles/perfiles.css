@@ -1,0 +1,106 @@
+/* Mismo estilo que el juego: pergamino #e9d5a1 con borde marrón, cinta roja, pixel art sin suavizar. Sin imágenes salvo los sprites. */
+:root {
+  --pergamino: #e9d5a1;
+  --borde: #5a3a1a;
+  --texto: #2a1608;
+  --suave: #5a3a1a;
+  --cinta: #b3322d;
+  --cinta-borde: #6b1a18;
+  --noche-arriba: #060a14;
+  --noche-abajo: #16203a;
+}
+
+* { box-sizing: border-box; }
+
+html { background: #16203a; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, "Courier New", monospace;
+  font-weight: 700;
+  color: var(--texto);
+  background: linear-gradient(var(--noche-arriba), var(--noche-abajo)) fixed;
+  line-height: 1.45;
+}
+
+main { max-width: 46rem; margin: 0 auto; padding: 1rem 0.75rem 3rem; display: grid; gap: 1rem; }
+a { color: #ffd54a; }
+.pergamino a { color: #6b1a18; }
+.pequeno { font-size: 0.8rem; font-weight: 400; margin: 0; }
+.solo-lectores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+/* Un pergamino: relleno beige, borde de 4 px y esquinas «comidas» como en pixel art. */
+.pergamino {
+  position: relative;
+  background: var(--pergamino);
+  border: 4px solid var(--borde);
+  padding: 0.9rem 1rem 1rem;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.45);
+  clip-path: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
+}
+
+.cinta {
+  margin: -0.9rem -1rem 0.7rem;
+  padding: 0.35rem 1rem;
+  background: var(--cinta);
+  border-bottom: 3px solid var(--cinta-borde);
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-shadow: 2px 2px 0 var(--cinta-borde);
+}
+.cinta-chica { font-size: 0.9rem; }
+
+.cabecera p { margin: 0.2rem 0 0.6rem; font-weight: 400; }
+
+.buscador input {
+  width: 100%;
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  color: var(--texto);
+  background: #fff6dc;
+  border: 3px solid var(--borde);
+  border-radius: 0;
+  outline: none;
+}
+.buscador input:focus { border-color: var(--cinta); }
+
+.tarjetas { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+
+.tarjeta { display: grid; grid-template-columns: auto 1fr; gap: 0.8rem; align-items: start; padding-top: 0.8rem; }
+.retrato {
+  width: 84px; height: 108px;
+  display: grid; place-items: center;
+  background: linear-gradient(#6b80ba, #aadcf6 70%, #6aa84f 70%); /* cielo de día y hierba, como en la isla */
+  border: 3px solid var(--borde);
+}
+.sprite {
+  width: 24px; height: 32px;
+  background-repeat: no-repeat;
+  background-position: 0 0; /* primer cuadro de «quieto de frente» */
+  image-rendering: pixelated;
+  transform: scale(3);
+  transform-origin: center;
+}
+.sprite.elfo { background-image: url("sprites/elfo.png"); }
+.sprite.enano { background-image: url("sprites/enano.png"); }
+.sprite.orco { background-image: url("sprites/orco.png"); }
+
+.datos { min-width: 0; }
+.nombre { margin: 0; font-size: 1.1rem; overflow-wrap: anywhere; }
+.rol { margin: 0 0 0.5rem; font-weight: 400; color: var(--suave); }
+.cifras { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.1rem 0.6rem; font-size: 0.9rem; }
+.cifras dt { font-weight: 400; color: var(--suave); }
+.cifras dd { margin: 0; text-align: right; }
+.titulos { margin: 0.6rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.titulos li { font-size: 0.75rem; padding: 0.15rem 0.45rem; background: var(--cinta); color: #fff; border: 2px solid var(--cinta-borde); }
+
+.llama { display: inline-block; width: 12px; height: 15px; margin-right: 0.3rem; vertical-align: -2px; }
+
+.aviso { margin: 0; text-align: center; }
+.como p { margin: 0.3rem 0; font-weight: 400; }
+.como strong { background: #fff6dc; border: 2px solid var(--borde); padding: 0 0.3rem; }
+
+footer { text-align: center; color: #cfd8ee; display: grid; gap: 0.4rem; }
+footer p { margin: 0; }

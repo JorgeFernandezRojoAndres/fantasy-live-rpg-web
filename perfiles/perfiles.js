@@ -45,6 +45,54 @@
     dl.append(dd);
   }
 
+  // Razas con modelo 3D (los cuadros del giro de VoxPix): por ahora solo el elfo. Las demás no llevan visor.
+  const VOXEL = { elfo: { cuadros: 24, ancho: 34, paso: 35 } }; // paso = ancho del cuadro + 1 px de separación
+  const PX_POR_CUADRO = 10; // cuánto hay que arrastrar para pasar de un cuadro al siguiente (una vuelta entera = 240 px)
+
+  const visor = document.getElementById('visor');
+  const escenaVisor = document.getElementById('visor-escena');
+  const voxVisor = escenaVisor.querySelector('.visor-vox');
+  let cuadro = 0;
+  let giroAuto = null;
+
+  function ponerCuadro(n) {
+    cuadro = ((n % VOXEL.elfo.cuadros) + VOXEL.elfo.cuadros) % VOXEL.elfo.cuadros;
+    voxVisor.style.backgroundPositionX = `calc(${-cuadro * VOXEL.elfo.paso} * var(--e) * 1px)`;
+  }
+  const pararGiroAuto = () => { clearInterval(giroAuto); giroAuto = null; };
+
+  async function abrirVisor(p) {
+    document.getElementById('visor-titulo').textContent = p.nombre;
+    escenaVisor.style.backgroundImage = `url("${await window.ESCENAS.fondo('leñador')}")`;
+    ponerCuadro(0);
+    visor.showModal();
+    escenaVisor.focus({ preventScroll: true });
+    pararGiroAuto();
+    // Gira solito despacio hasta que se toca (salvo que el sistema pida menos movimiento).
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) giroAuto = setInterval(() => ponerCuadro(cuadro + 1), 140);
+  }
+
+  // Arrastrar con el dedo o el ratón (pointer events: valen para los dos); la izquierda y la derecha giran en sentidos opuestos.
+  let arrastre = null;
+  escenaVisor.addEventListener('pointerdown', (e) => {
+    pararGiroAuto();
+    arrastre = { x: e.clientX, cuadro };
+    escenaVisor.setPointerCapture(e.pointerId);
+  });
+  escenaVisor.addEventListener('pointermove', (e) => {
+    if (arrastre) ponerCuadro(arrastre.cuadro - Math.round((e.clientX - arrastre.x) / PX_POR_CUADRO));
+  });
+  const soltar = () => { arrastre = null; };
+  escenaVisor.addEventListener('pointerup', soltar);
+  escenaVisor.addEventListener('pointercancel', soltar);
+  escenaVisor.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { pararGiroAuto(); ponerCuadro(cuadro + 1); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { pararGiroAuto(); ponerCuadro(cuadro - 1); e.preventDefault(); }
+  });
+  document.getElementById('visor-cerrar').addEventListener('click', () => visor.close());
+  visor.addEventListener('click', (e) => { if (e.target === visor) visor.close(); }); // clic fuera de la caja
+  visor.addEventListener('close', pararGiroAuto);
+
   // Un número estable por nombre (para que cada personaje empiece su animación en un cuadro distinto y no marchen todos a la vez).
   const hash = (t) => [...t].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
 
@@ -58,7 +106,17 @@
     sprite.style.setProperty('--desfase', `${-(hash(p.nombre) % 4) * (1 / 6)}s`);
     sprite.setAttribute('role', 'img');
     sprite.setAttribute('aria-label', `${p.raza_texto ?? p.raza}, ${p.oficio_texto ?? p.oficio}`);
-    retrato.append(sprite);
+    if (VOXEL[raza]) {
+      sprite.classList.add('girable');
+      sprite.setAttribute('role', 'button');
+      sprite.setAttribute('tabindex', '0');
+      sprite.setAttribute('aria-label', `${p.raza_texto ?? p.raza}, ${p.oficio_texto ?? p.oficio}. Pulsa para verlo en 3D`);
+      sprite.addEventListener('click', () => abrirVisor(p));
+      sprite.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirVisor(p); } });
+      retrato.append(sprite, el('span', 'marca3d', '3D'));
+    } else {
+      retrato.append(sprite);
+    }
 
     const datos = el('div', 'datos');
     datos.append(el('h2', 'nombre', p.nombre));

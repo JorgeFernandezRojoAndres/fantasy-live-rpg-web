@@ -33,6 +33,16 @@
       <p><a href="../index.html">Volver al inicio</a> · <a href="https://www.youtube.com/@JCR/live">Ver el directo</a></p>
     </footer>
   </main>
+  <dialog id="visor" class="visor" aria-labelledby="visor-titulo">
+    <div class="pergamino visor-caja">
+      <div class="cinta" id="visor-titulo">Vista 3D</div>
+      <div id="visor-escena" class="visor-escena" role="img" tabindex="0" aria-label="Personaje en 3D: arrastra o usa las flechas para girarlo">
+        <div class="visor-vox"></div>
+      </div>
+      <p class="pequeno visor-ayuda">Arrastra para girarlo (o usa las flechas ← →)</p>
+      <button id="visor-cerrar" type="button" class="boton">Cerrar</button>
+    </div>
+  </dialog>
   <script src="escenas.js"></script>
   <script src="perfiles.js"></script>
 </body>

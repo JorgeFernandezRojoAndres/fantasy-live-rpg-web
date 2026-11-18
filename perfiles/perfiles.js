@@ -89,11 +89,12 @@
   async function cargar() {
     try {
       const r = await fetch('perfiles.json', { cache: 'no-cache' });
-      if (!r.ok) throw new Error(r.status);
-      const datos = await r.json();
+      // Todavía no existe (nadie lo pidió aún o no se ha publicado): es lo mismo que «sin perfiles», no un error.
+      const datos = r.status === 404 ? { perfiles: [] } : await r.json();
+      if (!r.ok && r.status !== 404) throw new Error(r.status);
       perfiles = Array.isArray(datos.perfiles) ? datos.perfiles : [];
       const cuando = new Date(datos.generado);
-      if (!Number.isNaN(cuando.getTime())) {
+      if (datos.generado && !Number.isNaN(cuando.getTime())) {
         actualizado.textContent = `Actualizado: ${cuando.toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', dateStyle: 'medium', timeStyle: 'short' })} (hora de Buenos Aires). Se renueva cada hora.`;
       }
     } catch {

@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-18T03:13:01.804Z",
+ "generado": "2026-11-24T21:11:41.145Z",
  "perfiles": [
   {
    "nombre": "@JCR",
@@ -7,12 +7,25 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 336,
-   "aporte_total": 179540,
+   "aporte_dia": 1728,
+   "aporte_total": 207032,
    "titulos": [
     "Matador de serpientes ×5"
    ],
-   "racha": 4
+   "racha": 10
+  },
+  {
+   "nombre": "@joaquinpiguillem3806",
+   "raza": "elfo",
+   "raza_texto": "elfo",
+   "oficio": "minero",
+   "oficio_texto": "minero",
+   "aporte_dia": 0,
+   "aporte_total": 21114,
+   "titulos": [
+    "Matador de serpientes ×2"
+   ],
+   "racha": 3
   }
  ]
 }

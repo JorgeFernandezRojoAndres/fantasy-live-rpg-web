@@ -1,14 +1,14 @@
 {
- "generado": "2026-11-25T19:30:07.108Z",
+ "generado": "2026-11-25T20:30:07.108Z",
  "perfiles": [
   {
    "nombre": "@JCR",
-   "raza": "elfo",
-   "raza_texto": "elfo",
-   "oficio": "leñador",
-   "oficio_texto": "leñador",
-   "aporte_dia": 6984,
-   "aporte_total": 214520,
+   "raza": "orco",
+   "raza_texto": "orco",
+   "oficio": "minero",
+   "oficio_texto": "minero",
+   "aporte_dia": 9910,
+   "aporte_total": 217446,
    "titulos": [
     "Matador de serpientes ×5"
    ],
@@ -26,6 +26,17 @@
     "Matador de serpientes ×2"
    ],
    "racha": 3
+  },
+  {
+   "nombre": "@MartinYTOG",
+   "raza": "elfo",
+   "raza_texto": "elfo",
+   "oficio": "leñador",
+   "oficio_texto": "leñador",
+   "aporte_dia": 2388,
+   "aporte_total": 2388,
+   "titulos": [],
+   "racha": 1
   }
  ]
 }

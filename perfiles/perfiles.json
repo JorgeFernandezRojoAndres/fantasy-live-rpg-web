@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-25T03:30:07.106Z",
+ "generado": "2026-11-25T06:30:07.105Z",
  "perfiles": [
   {
    "nombre": "@JCR",
@@ -7,12 +7,12 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 0,
-   "aporte_total": 207536,
+   "aporte_dia": 2232,
+   "aporte_total": 209768,
    "titulos": [
     "Matador de serpientes ×5"
    ],
-   "racha": 10
+   "racha": 11
   },
   {
    "nombre": "@joaquinpiguillem3806",

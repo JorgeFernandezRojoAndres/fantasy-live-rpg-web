@@ -135,6 +135,8 @@
       p.titulos.forEach((t) => ul.append(el('li', '', t)));
       datos.append(ul);
     }
+    const inventario = window.INVENTARIO?.panel(p); // solo si el perfil trae «objetos»
+    if (inventario) datos.append(inventario);
     art.append(retrato, datos);
     return art;
   }
@@ -159,7 +161,9 @@
 
   async function cargar() {
     try {
-      const r = await fetch('perfiles.json', { cache: 'no-cache' });
+      // Solo en local (localhost): ?datos=ruta.json carga un JSON de prueba. En GitHub Pages se ignora y siempre es perfiles.json.
+      const local = ['localhost', '127.0.0.1'].includes(location.hostname);
+      const r = await fetch((local && new URLSearchParams(location.search).get('datos')) || 'perfiles.json', { cache: 'no-cache' });
       // Todavía no existe (nadie lo pidió aún o no se ha publicado): es lo mismo que «sin perfiles», no un error.
       const datos = r.status === 404 ? { perfiles: [] } : await r.json();
       if (!r.ok && r.status !== 404) throw new Error(r.status);

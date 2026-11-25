@@ -12,6 +12,13 @@
   // Aviso del retraso de la publicación. Para quitarlo basta con dejarlo en '' (no se pinta).
   const AVISO_RETRASO = 'El inventario puede tener hasta 1 h de retraso.';
   const NOTA_EQUIPADO = 'equipado: se desequipa solo al vender';
+  const NOTA_REEMPLAZADO = 'equipado ahora en el juego · se reemplaza al guardar';
+  // Nota de un objeto según el juego (equipoGuardado) y la pantalla. Sin equipar en el juego: sin nota.
+  // Si está marcado para vender, manda la venta: al pegar «!vender» se desequipa solo.
+  function notaEquipado(id, equipoGuardado, seleccion, marcados) {
+    if (!equipoGuardado.includes(id)) return '';
+    return seleccion.includes(id) || marcados.includes(id) ? NOTA_EQUIPADO : NOTA_REEMPLAZADO;
+  }
   const STATS = [['ataque', 'Ataque'], ['defensa', 'Defensa'], ['vida', 'Vida']];
 
   const puntos = (o) => STATS.reduce((s, [k]) => s + (Number(o[k]) || 0), 0);
@@ -131,7 +138,7 @@
         f.botonEquipo.setAttribute('aria-pressed', String(puesto));
         f.fila.classList.toggle('puesto', puesto);
         f.casilla.checked = marcados.has(o.id);
-        f.nota.textContent = equipoGuardado.includes(o.id) ? NOTA_EQUIPADO : '';
+        f.nota.textContent = notaEquipado(o.id, equipoGuardado, seleccion, [...marcados]);
       }
       const venta = aVender([...marcados], objetos);
       guardar.disabled = !equipoValido(seleccion, objetos);
@@ -162,5 +169,5 @@
     return caja;
   }
 
-  window.INVENTARIO = { TIPOS, PRECIO_POR_PUNTO, puntos, oroPor, comandoEquipo, comandoVender, alternarEquipo, ordenarEquipo, equipoValido, aVender, sinVendidos, AVISO_RETRASO, panel };
+  window.INVENTARIO = { TIPOS, PRECIO_POR_PUNTO, puntos, oroPor, comandoEquipo, comandoVender, alternarEquipo, ordenarEquipo, equipoValido, aVender, sinVendidos, notaEquipado, AVISO_RETRASO, panel };
 })();

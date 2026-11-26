@@ -10,6 +10,8 @@
   const actualizado = document.getElementById('actualizado');
   let perfiles = [];
 
+  const CLAVE_YO = 'perfil-soy-yo';
+  const guardado = () => { try { return localStorage.getItem(CLAVE_YO); } catch { return null; } };
   const normalizar = (t) => t.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
   const numero = (n) => Number(n).toLocaleString('es-AR');
   const el = (tag, clase, texto) => {
@@ -135,8 +137,14 @@
       p.titulos.forEach((t) => ul.append(el('li', '', t)));
       datos.append(ul);
     }
-    const inventario = window.INVENTARIO?.panel(p); // solo si el perfil trae «objetos»
+    // El inventario solo se ve en la tarjeta que la persona marcó como suya (se guarda en su navegador; no es seguridad: el juego valida el dueño en el chat).
+    const soyYo = guardado() === p.nombre;
+    const inventario = soyYo ? window.INVENTARIO?.panel(p) : null; // solo si el perfil trae «objetos»
     if (inventario) datos.append(inventario);
+    const marca = el('button', 'boton boton-yo', soyYo ? 'No soy yo' : 'Este soy yo');
+    marca.type = 'button';
+    marca.addEventListener('click', () => { soyYo ? localStorage.removeItem(CLAVE_YO) : localStorage.setItem(CLAVE_YO, p.nombre); pintar(); });
+    datos.append(marca);
     art.append(retrato, datos);
     return art;
   }

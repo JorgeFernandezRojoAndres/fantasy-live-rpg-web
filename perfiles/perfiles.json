@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-26T01:25:07.440Z",
+ "generado": "2026-11-26T01:30:12.641Z",
  "perfiles": [
   {
    "nombre": "@fermin2049",
@@ -7,8 +7,8 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 6468,
-   "aporte_total": 52872,
+   "aporte_dia": 6912,
+   "aporte_total": 53316,
    "titulos": [
     "Matador de serpientes ×4"
    ],
@@ -31,8 +31,8 @@
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 20040,
-   "aporte_total": 227576,
+   "aporte_dia": 20410,
+   "aporte_total": 227946,
    "titulos": [
     "Matador de serpientes ×6"
    ],
@@ -50,6 +50,21 @@
    "equipo": [
     1
    ]
+  },
+  {
+   "nombre": "@jeniferdigennaro3167",
+   "raza": "elfo",
+   "raza_texto": "elfo",
+   "oficio": "leñador",
+   "oficio_texto": "leñador",
+   "aporte_dia": 336,
+   "aporte_total": 28044,
+   "titulos": [
+    "Matador de serpientes ×2"
+   ],
+   "racha": 2,
+   "objetos": [],
+   "equipo": []
   },
   {
    "nombre": "@joaquinpiguillem3806",

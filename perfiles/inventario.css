@@ -1,0 +1,31 @@
+/* Inventario de la tarjeta de perfil (#166). Mismo estilo que perfiles.css (usa sus variables). */
+.inventario { margin-top: 0.7rem; border-top: 2px dashed var(--borde); padding-top: 0.5rem; }
+.inventario summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+.inventario summary:focus-visible { outline: 3px solid var(--cinta); outline-offset: 2px; }
+.inv-dentro { display: grid; gap: 0.6rem; }
+.inv-grupo h3 { margin: 0.2rem 0 0.3rem; font-size: 0.85rem; color: var(--suave); }
+.inv-fila {
+  display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.5rem; align-items: center;
+  padding: 0.4rem 0.5rem; margin-bottom: 0.35rem; background: #fff6dc; border: 2px solid var(--borde);
+}
+.inv-fila.puesto { border-color: var(--cinta); background: #ffe9b8; }
+.inv-info { display: grid; min-width: 0; grid-column: 1 / -1; } /* la tarjeta es angosta: nombre arriba, botones debajo */
+.inv-nombre { overflow-wrap: break-word; }
+.inv-stats { font-size: 0.75rem; font-weight: 400; color: var(--suave); }
+.inv-equipar, .inv-vender {
+  font: inherit; font-size: 0.8rem; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
+  padding: 0 0.6rem; color: var(--texto); background: var(--pergamino); border: 2px solid var(--borde); border-radius: 0; cursor: pointer;
+}
+.inv-equipar { min-width: 5.2rem; justify-self: stretch; }
+.inv-equipar[aria-pressed="true"] { color: #fff; background: var(--cinta); border-color: var(--cinta-borde); }
+.inv-vender input { width: 1.4rem; height: 1.4rem; margin: 0; accent-color: var(--cinta); }
+.inv-equipar:focus-visible, .inv-vender:focus-within { outline: 3px solid #ffd54a; outline-offset: 1px; }
+.inv-nota { grid-column: 1 / -1; font-size: 0.72rem; font-weight: 400; color: var(--cinta-borde); }
+.inv-nota:empty { display: none; }
+.inv-acciones { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.inv-acciones .boton { min-height: 44px; flex: 1 1 8rem; }
+.inv-acciones .boton:disabled { opacity: 0.5; cursor: not-allowed; }
+.inv-resumen, .inv-estado { margin: 0; font-size: 0.85rem; font-weight: 400; }
+.inv-resumen:empty, .inv-estado:empty { display: none; }
+.inv-comando { width: 100%; font: inherit; padding: 0.55rem 0.7rem; color: var(--texto); background: #fff; border: 3px solid var(--borde); border-radius: 0; }
+.inv-avisos p { margin: 0.2rem 0; }

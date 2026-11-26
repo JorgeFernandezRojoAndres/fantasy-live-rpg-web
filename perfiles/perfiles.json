@@ -1,14 +1,38 @@
 {
- "generado": "2026-11-26T01:12:15.009Z",
+ "generado": "2026-11-26T01:25:07.440Z",
  "perfiles": [
+  {
+   "nombre": "@fermin2049",
+   "raza": "elfo",
+   "raza_texto": "elfo",
+   "oficio": "leñador",
+   "oficio_texto": "leñador",
+   "aporte_dia": 6468,
+   "aporte_total": 52872,
+   "titulos": [
+    "Matador de serpientes ×4"
+   ],
+   "racha": 1,
+   "objetos": [
+    {
+     "id": 2,
+     "tipo": "casco",
+     "nombre": "Casco del troll",
+     "ataque": 2,
+     "defensa": 3,
+     "vida": 0
+    }
+   ],
+   "equipo": []
+  },
   {
    "nombre": "@JCR",
    "raza": "orco",
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 19000,
-   "aporte_total": 226536,
+   "aporte_dia": 20040,
+   "aporte_total": 227576,
    "titulos": [
     "Matador de serpientes ×6"
    ],
@@ -23,7 +47,9 @@
      "vida": 3
     }
    ],
-   "equipo": []
+   "equipo": [
+    1
+   ]
   },
   {
    "nombre": "@joaquinpiguillem3806",

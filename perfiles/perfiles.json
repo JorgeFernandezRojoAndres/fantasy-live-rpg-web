@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-26T02:55:00.920Z",
+ "generado": "2026-11-26T03:36:00.950Z",
  "perfiles": [
   {
    "nombre": "@fermin2049",
@@ -7,7 +7,7 @@
    "raza_texto": "elfo",
    "oficio": "agricultor",
    "oficio_texto": "agricultor",
-   "aporte_dia": 10440,
+   "aporte_dia": 0,
    "aporte_total": 56844,
    "titulos": [
     "Matador de serpientes ×4"
@@ -31,12 +31,12 @@
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 24120,
-   "aporte_total": 231656,
+   "aporte_dia": 130,
+   "aporte_total": 231786,
    "titulos": [
     "Matador de serpientes ×6"
    ],
-   "racha": 11,
+   "racha": 12,
    "objetos": [
     {
      "id": 1,
@@ -57,12 +57,12 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 4200,
+   "aporte_dia": 0,
    "aporte_total": 31908,
    "titulos": [
     "Matador de serpientes ×2"
    ],
-   "racha": 2,
+   "racha": 3,
    "objetos": [],
    "equipo": []
   },
@@ -87,8 +87,21 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 2388,
+   "aporte_dia": 0,
    "aporte_total": 2388,
+   "titulos": [],
+   "racha": 1,
+   "objetos": [],
+   "equipo": []
+  },
+  {
+   "nombre": "@SolucionesDevs",
+   "raza": "elfo",
+   "raza_texto": "elfo",
+   "oficio": "minero",
+   "oficio_texto": "minero",
+   "aporte_dia": 0,
+   "aporte_total": 0,
    "titulos": [],
    "racha": 1,
    "objetos": [],

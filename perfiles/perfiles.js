@@ -47,8 +47,14 @@
     dl.append(dd);
   }
 
-  // Razas con modelo 3D (los cuadros del giro de VoxPix): por ahora solo el elfo. Las demás no llevan visor.
-  const VOXEL = { elfo: { cuadros: 24, ancho: 34, paso: 35 } }; // paso = ancho del cuadro + 1 px de separación
+  // Razas con modelo 3D (los 24 cuadros del giro de VoxPix en una tira, 1 px entre cuadros). Cada una con el tamaño de su cuadro.
+  const VOXEL = {
+    elfo: { cuadros: 24, ancho: 34, alto: 41 },
+    orco: { cuadros: 24, ancho: 28, alto: 40 },
+    enano: { cuadros: 24, ancho: 19, alto: 27 },
+  };
+  for (const v of Object.values(VOXEL)) v.paso = v.ancho + 1;
+  let modelo = VOXEL.elfo;
   const PX_POR_CUADRO = 10; // cuánto hay que arrastrar para pasar de un cuadro al siguiente (una vuelta entera = 240 px)
 
   const visor = document.getElementById('visor');
@@ -58,12 +64,20 @@
   let giroAuto = null;
 
   function ponerCuadro(n) {
-    cuadro = ((n % VOXEL.elfo.cuadros) + VOXEL.elfo.cuadros) % VOXEL.elfo.cuadros;
-    voxVisor.style.backgroundPositionX = `calc(${-cuadro * VOXEL.elfo.paso} * var(--e) * 1px)`;
+    cuadro = ((n % modelo.cuadros) + modelo.cuadros) % modelo.cuadros;
+    voxVisor.style.backgroundPositionX = `calc(${-cuadro * modelo.paso} * var(--e) * 1px)`;
   }
   const pararGiroAuto = () => { clearInterval(giroAuto); giroAuto = null; };
 
   async function abrirVisor(p) {
+    const raza = VOXEL[p.raza] ? p.raza : 'elfo';
+    modelo = VOXEL[raza];
+    const tira = modelo.cuadros * modelo.paso - 1;
+    Object.assign(voxVisor.style, {
+      left: `calc(50% - ${modelo.ancho / 2}px * var(--e))`,
+      width: `calc(${modelo.ancho}px * var(--e))`, height: `calc(${modelo.alto}px * var(--e))`,
+      backgroundImage: `url("voxel/${raza}_giro.png")`, backgroundSize: `calc(${tira}px * var(--e)) calc(${modelo.alto}px * var(--e))`,
+    });
     document.getElementById('visor-titulo').textContent = p.nombre;
     escenaVisor.style.backgroundImage = `url("${await window.ESCENAS.fondo('leñador')}")`;
     ponerCuadro(0);

@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-26T00:30:07.108Z",
+ "generado": "2026-11-26T01:12:15.009Z",
  "perfiles": [
   {
    "nombre": "@JCR",
@@ -7,12 +7,23 @@
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 15180,
-   "aporte_total": 222716,
+   "aporte_dia": 19000,
+   "aporte_total": 226536,
    "titulos": [
-    "Matador de serpientes ×5"
+    "Matador de serpientes ×6"
    ],
-   "racha": 11
+   "racha": 11,
+   "objetos": [
+    {
+     "id": 1,
+     "tipo": "anillo",
+     "nombre": "Anillo opaco",
+     "ataque": 0,
+     "defensa": 1,
+     "vida": 3
+    }
+   ],
+   "equipo": []
   },
   {
    "nombre": "@joaquinpiguillem3806",
@@ -25,7 +36,9 @@
    "titulos": [
     "Matador de serpientes ×2"
    ],
-   "racha": 3
+   "racha": 3,
+   "objetos": [],
+   "equipo": []
   },
   {
    "nombre": "@MartinYTOG",
@@ -36,7 +49,9 @@
    "aporte_dia": 2388,
    "aporte_total": 2388,
    "titulos": [],
-   "racha": 1
+   "racha": 1,
+   "objetos": [],
+   "equipo": []
   }
  ]
 }

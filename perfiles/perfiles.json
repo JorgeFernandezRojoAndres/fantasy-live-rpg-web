@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-26T03:36:00.950Z",
+ "generado": "2026-11-26T03:46:30.958Z",
  "perfiles": [
   {
    "nombre": "@fermin2049",
@@ -31,10 +31,10 @@
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 130,
-   "aporte_total": 231786,
+   "aporte_dia": 1310,
+   "aporte_total": 232966,
    "titulos": [
-    "Matador de serpientes ×6"
+    "Matador de serpientes ×7"
    ],
    "racha": 12,
    "objetos": [
@@ -45,6 +45,14 @@
      "ataque": 0,
      "defensa": 1,
      "vida": 3
+    },
+    {
+     "id": 5,
+     "tipo": "anillo",
+     "nombre": "Anillo de musgo",
+     "ataque": 1,
+     "defensa": 0,
+     "vida": 4
     }
    ],
    "equipo": [
@@ -57,13 +65,22 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 0,
-   "aporte_total": 31908,
+   "aporte_dia": 1320,
+   "aporte_total": 33228,
    "titulos": [
-    "Matador de serpientes ×2"
+    "Matador de serpientes ×3"
    ],
    "racha": 3,
-   "objetos": [],
+   "objetos": [
+    {
+     "id": 4,
+     "tipo": "espada",
+     "nombre": "Espada de ceniza",
+     "ataque": 2,
+     "defensa": 2,
+     "vida": 0
+    }
+   ],
    "equipo": []
   },
   {
@@ -100,9 +117,11 @@
    "raza_texto": "elfo",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 0,
-   "aporte_total": 0,
-   "titulos": [],
+   "aporte_dia": 1130,
+   "aporte_total": 1130,
+   "titulos": [
+    "Matador de serpientes"
+   ],
    "racha": 1,
    "objetos": [],
    "equipo": []

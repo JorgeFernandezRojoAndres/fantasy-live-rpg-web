@@ -1,8 +1,11 @@
 /* Inventario de la tarjeta de perfil (#166). Mismo estilo que perfiles.css (usa sus variables). */
 .inventario { margin-top: 0.7rem; border-top: 2px dashed var(--borde); padding-top: 0.5rem; }
-.inventario summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
-.inventario summary:focus-visible { outline: 3px solid var(--cinta); outline-offset: 2px; }
+.inventario { display: grid; gap: 0.6rem; }
+.inv-abrir { min-height: 44px; width: 100%; }
+.inv-abrir:focus-visible { outline: 3px solid #ffd54a; outline-offset: 1px; }
+.inv-abrir:disabled, .inv-abrir:disabled:hover { opacity: 0.5; cursor: not-allowed; background: var(--cinta); }
 .inv-dentro { display: grid; gap: 0.6rem; }
+.inv-dentro[hidden] { display: none; }
 .inv-grupo h3 { margin: 0.2rem 0 0.3rem; font-size: 0.85rem; color: var(--suave); }
 .inv-fila {
   display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.5rem; align-items: center;

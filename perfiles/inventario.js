@@ -74,17 +74,38 @@
     return nota;
   }
 
-  // El panel de una tarjeta. Sin objetos (lista vacía o perfiles.json viejo sin «objetos») no hay panel: la tarjeta queda como siempre.
+  let paneles = 0; // para dar a cada panel un id único (aria-controls)
+  const textoAbrir = (n) => `Ver inventario (${n})`; // sin emoji: con la fuente monoespaciada se veía como una mancha
+  const TEXTO_CERRAR = 'Ocultar inventario';
+
+  // El panel de una tarjeta. Sin el campo «objetos» (perfiles.json viejo) no hay nada: la tarjeta queda como siempre.
+  // Con la lista vacía hay un botón deshabilitado «Inventario vacío», para que se vea que la función existe.
   function panel(perfil) {
-    if (!Array.isArray(perfil.objetos) || !perfil.objetos.length) return null;
+    if (!Array.isArray(perfil.objetos)) return null;
     const objetos = perfil.objetos;
+    const caja = el('div', 'inventario');
+    const abrir = el('button', 'boton inv-abrir', objetos.length ? textoAbrir(objetos.length) : 'Inventario vacío');
+    abrir.type = 'button';
+    caja.append(abrir);
+    if (!objetos.length) {
+      abrir.disabled = true;
+      return caja;
+    }
     const equipoGuardado = Array.isArray(perfil.equipo) ? perfil.equipo : [];
     let seleccion = objetos.filter((o) => equipoGuardado.includes(o.id)).map((o) => o.id);
     const marcados = new Set();
 
-    const caja = el('details', 'inventario');
-    caja.append(el('summary', '', `Inventario (${objetos.length})`));
     const dentro = el('div', 'inv-dentro');
+    dentro.id = `inventario-${++paneles}`;
+    dentro.hidden = true;
+    abrir.setAttribute('aria-controls', dentro.id);
+    abrir.setAttribute('aria-expanded', 'false');
+    abrir.addEventListener('click', () => {
+      const abierto = dentro.hidden; // estaba cerrado → se abre
+      dentro.hidden = !abierto;
+      abrir.setAttribute('aria-expanded', String(abierto));
+      abrir.textContent = abierto ? TEXTO_CERRAR : textoAbrir(objetos.length);
+    });
     caja.append(dentro);
 
     const lista = el('div', 'inv-lista');

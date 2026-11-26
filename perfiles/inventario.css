@@ -9,7 +9,8 @@
   padding: 0.4rem 0.5rem; margin-bottom: 0.35rem; background: #fff6dc; border: 2px solid var(--borde);
 }
 .inv-fila.puesto { border-color: var(--cinta); background: #ffe9b8; }
-.inv-info { display: grid; min-width: 0; grid-column: 1 / -1; } /* la tarjeta es angosta: nombre arriba, botones debajo */
+.inv-info { display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem; align-items: center; min-width: 0; grid-column: 1 / -1; }
+.inv-icono { grid-row: 1 / 3; image-rendering: pixelated; } /* la tarjeta es angosta: nombre arriba, botones debajo */
 .inv-nombre { overflow-wrap: break-word; }
 .inv-stats { font-size: 0.75rem; font-weight: 400; color: var(--suave); }
 .inv-equipar, .inv-vender {
@@ -29,3 +30,5 @@
 .inv-resumen:empty, .inv-estado:empty { display: none; }
 .inv-comando { width: 100%; font: inherit; padding: 0.55rem 0.7rem; color: var(--texto); background: #fff; border: 3px solid var(--borde); border-radius: 0; }
 .inv-avisos p { margin: 0.2rem 0; }
+
+.boton-yo { margin-top: 0.6rem; min-height: 44px; font-size: 0.8rem; }

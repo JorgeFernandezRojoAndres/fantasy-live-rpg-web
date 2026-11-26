@@ -110,7 +110,9 @@
       for (const o of delTipo) {
         const fila = el('div', 'inv-fila');
         const info = el('div', 'inv-info');
-        info.append(el('span', 'inv-nombre', o.nombre), el('span', 'inv-stats', `${textoStats(o)} · ${puntos(o)} pt`));
+        const icono = el('img', 'inv-icono');
+        icono.src = `iconos/${tipo}.png`; icono.alt = ''; icono.width = 32; icono.height = 32;
+        info.append(icono, el('span', 'inv-nombre', o.nombre), el('span', 'inv-stats', `${textoStats(o)} · ${puntos(o)} pt`));
         const botonEquipo = el('button', 'inv-equipar', 'Equipar');
         botonEquipo.type = 'button';
         botonEquipo.addEventListener('click', () => { seleccion = alternarEquipo(seleccion, o, objetos); marcados.delete(o.id); pintar(); });

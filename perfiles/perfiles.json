@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-26T04:46:31.000Z",
+ "generado": "2026-11-27T03:07:10.075Z",
  "perfiles": [
   {
    "nombre": "@fermin2049",
@@ -31,7 +31,7 @@
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 4370,
+   "aporte_dia": 0,
    "aporte_total": 236026,
    "titulos": [
     "Matador de serpientes ×7"
@@ -65,7 +65,7 @@
    "raza_texto": "elfo",
    "oficio": "leñador",
    "oficio_texto": "leñador",
-   "aporte_dia": 5112,
+   "aporte_dia": 0,
    "aporte_total": 37020,
    "titulos": [
     "Matador de serpientes ×3"
@@ -119,7 +119,7 @@
    "raza_texto": "elfo",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 4180,
+   "aporte_dia": 0,
    "aporte_total": 4180,
    "titulos": [
     "Matador de serpientes"

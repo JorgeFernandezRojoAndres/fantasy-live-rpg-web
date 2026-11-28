@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-28T03:55:16.834Z",
+ "generado": "2026-11-28T05:55:16.899Z",
  "perfiles": [
   {
    "nombre": "@fermin2049",
@@ -31,12 +31,12 @@
    "raza_texto": "orco",
    "oficio": "minero",
    "oficio_texto": "minero",
-   "aporte_dia": 0,
-   "aporte_total": 237886,
+   "aporte_dia": 1860,
+   "aporte_total": 239746,
    "titulos": [
     "Matador de serpientes ×7"
    ],
-   "racha": 13,
+   "racha": 14,
    "objetos": [
     {
      "id": 1,
